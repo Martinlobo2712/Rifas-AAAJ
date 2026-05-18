@@ -41,6 +41,7 @@ export function useSheetData() {
                 pares.forEach(({ numIdx, compradorIdx }) => {
                     const numero = row[numIdx]?.trim()
                     const comprador = row[compradorIdx]?.trim() ?? ''
+                    console.log(comprador)
 
                     if (numero && numero !== '') {
                         parsed.push({

@@ -11,23 +11,28 @@ export default function App() {
   const { numbers, loading, error, lastUpdated } = useSheetData()
   const [filtro, setFiltro] = useState('todos')
 
+  console.log(numbers)
+
   return (
-    <div>
+    <div style={{
+      backgroundColor: "#fff6e9"
+    }}>
       <Navbar logo={logo} />
 
       <header style={{
         textAlign: 'center',
         marginBottom: '2rem',
         padding: '2rem 0 1.5rem',
-        backgroundColor: '#000000'
+        backgroundColor: '#ebe3d4'
       }}>
         <h1 style={{
           fontSize: '48px',
           fontWeight: '800',
           letterSpacing: '-1px',
-          color: '#ffffff',
+          color: '#000000',
           lineHeight: 1,
-          marginBottom: '10px'
+          marginBottom: '10px',
+          borderBottom: '2, solid, #000000'
         }}>
           Rifas Sur-Centro 2026
         </h1>
@@ -43,7 +48,7 @@ export default function App() {
       <div style={{
         maxWidth: '860px',
         margin: '0 auto',
-        padding: '0rem 1rem'
+        padding: '0rem 1rem',
       }}>
 
         {loading && (
