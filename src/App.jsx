@@ -5,25 +5,32 @@ import { FilterBar } from './components/FilterBar'
 import { NumberGrid } from './components/NumberGrid'
 import { Navbar } from './components/Navbar'
 import { RIFA_PRECIO } from './config.js'
+import { useCountdown } from './hooks/useCountdown'
+import { usePremios } from './hooks/usePremios'
+import { PrizesTable } from './components/PrizesTable.jsx'
+import { SponsorBanner } from './components/SponsorsBanner'
 import logo from './assets/escudoaaaj.svg'
 
 export default function App() {
   const { numbers, loading, error, lastUpdated } = useSheetData()
+  const segundos = useCountdown(lastUpdated)
   const [filtro, setFiltro] = useState('todos')
-
-  console.log(numbers)
+  const { prizes, loading: loadingPrizes } = usePremios()
+  const [showingPrizes, setShowingPrizes] = useState(false)
+  const logoModules = import.meta.glob('./assets/logos/*', { eager: true })
+  const sponsorLogos = Object.values(logoModules).map(m => m.default)
 
   return (
     <div style={{
-      backgroundColor: "#fff6e9"
+      backgroundColor: "#fff6e9",
+      marginBottom: "2rem"
     }}>
       <Navbar logo={logo} />
 
       <header style={{
         textAlign: 'center',
-        marginBottom: '2rem',
         padding: '2rem 0 1.5rem',
-        backgroundColor: '#ebe3d4'
+        backgroundColor: '#ebe3d4',
       }}>
         <h1 style={{
           fontSize: '48px',
@@ -31,8 +38,7 @@ export default function App() {
           letterSpacing: '-1px',
           color: '#000000',
           lineHeight: 1,
-          marginBottom: '10px',
-          borderBottom: '2, solid, #000000'
+          marginBottom: '10px'
         }}>
           Rifas Sur-Centro 2026
         </h1>
@@ -41,14 +47,17 @@ export default function App() {
           color: '#888',
           fontWeight: '400'
         }}>
-          Liga de Honor Oro Caballeros - nosecuantos números
+          Liga de Honor Oro Caballeros - {numbers.length} números
         </p>
       </header>
+
+      <SponsorBanner logos={sponsorLogos} />
 
       <div style={{
         maxWidth: '860px',
         margin: '0 auto',
         padding: '0rem 1rem',
+        marginTop: "1rem"
       }}>
 
         {loading && (
@@ -76,19 +85,32 @@ export default function App() {
             <div style={{
               textAlign: 'center',
               fontSize: 21,
-              color: '#0401c7',
+              paddingBottom: '0.5rem',
+              color: '#ce0f0f',
+              fontWeight: '700',
               textShadow: '1px 1px 1px #000000'
             }}>
               <p>{RIFA_PRECIO}</p>
             </div>
-            <FilterBar filtroActivo={filtro} onChange={setFiltro} />
-            <NumberGrid numbers={numbers} filtro={filtro} />
+            <div style={{
+              border: '1px solid #000000',
+              padding: '1.5rem'
+            }}>
+              <FilterBar filtroActivo={filtro} onChange={setFiltro} onShowPrizes={setShowingPrizes} showingPrizes={showingPrizes} />
+              {showingPrizes ? (
+                <PrizesTable prizes={prizes} loading={loadingPrizes} />
+              ) : (
+                <NumberGrid numbers={numbers} filtro={filtro} />
+              )}
+            </div>
           </>
         )}
 
         {lastUpdated && (
-          <p style={{ textAlign: 'center', color: '#bbb', fontSize: '12px', marginTop: '2rem' }}>
-            Última actualización: {lastUpdated.toLocaleTimeString('es-AR')}
+          <p style={{ textAlign: 'center', color: '#535353', fontSize: '12px', marginTop: '2rem' }}>
+            Última actualización: {lastUpdated.toLocaleTimeString('es-AR', { hour12: false })}
+            {' · '}
+            Próxima actualización en {segundos}s
           </p>
         )}
 

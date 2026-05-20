@@ -1,7 +1,7 @@
 export function Navbar({ logo }) {
     return (
         <nav style={{
-            background: '#ce0f0f',
+            background: '#cc1818',
             padding: '0 1.5rem',
             display: 'flex',
             alignItems: 'center',

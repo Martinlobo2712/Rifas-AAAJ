@@ -30,14 +30,13 @@ function Celda({ numero, estado }) {
     return (
         <div style={{
             padding: '6px 2px',
-            borderRadius: '8px',
+            borderRadius: '0',
             textAlign: 'center',
-            fontSize: '13px',
+            fontSize: '11px',
             fontWeight: '500',
-            border: '1px solid',
-            borderColor: vendido ? '#f09595' : '#97c459',
-            background: vendido ? '#fcebeb' : '#eaf3de',
-            color: vendido ? '#791f1f' : '#27500a',
+            border: '1px solid #ce0f0f',
+            background: vendido ? '#ce0f0f' : '#fff',
+            color: vendido ? '#fff' : '#ce0f0f',
         }}>
             {numero}
         </div>
