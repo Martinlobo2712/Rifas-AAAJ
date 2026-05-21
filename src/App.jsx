@@ -26,6 +26,7 @@ export default function App() {
       marginBottom: "2rem"
     }}>
       <Navbar logo={logo} />
+      <SponsorBanner logos={sponsorLogos} />
 
       <header style={{
         textAlign: 'center',
@@ -51,7 +52,6 @@ export default function App() {
         </p>
       </header>
 
-      <SponsorBanner logos={sponsorLogos} />
 
       <div style={{
         maxWidth: '860px',
