@@ -91,6 +91,17 @@ export default function App() {
               textShadow: '1px 1px 1px #000000'
             }}>
               <p>{RIFA_PRECIO}</p>
+              <p style={{ fontSize: '16px', color: '#464646', marginTop: '4px' }}>
+                Pedí tu numero! →{' '}
+                <a href="https://www.instagram.com/liga.aaaj/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#cc1818', fontWeight: '600', textDecoration: 'none' }}
+                >
+                  @liga.aaaj
+                </a>
+                {' '}←
+              </p>
             </div>
             <div style={{
               border: '1px solid #000000',
@@ -115,6 +126,6 @@ export default function App() {
         )}
 
       </div>
-    </div>
+    </div >
   )
 }

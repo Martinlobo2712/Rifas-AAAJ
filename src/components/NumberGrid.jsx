@@ -34,9 +34,9 @@ function Celda({ numero, estado }) {
             textAlign: 'center',
             fontSize: '11px',
             fontWeight: '500',
-            border: '1px solid #ce0f0f',
-            background: vendido ? '#ce0f0f' : '#fff',
-            color: vendido ? '#fff' : '#ce0f0f',
+            border: vendido ? '#ce0f0f' : '1px solid #1fce0f',
+            background: vendido ? '#ce0f0f' : '#ffffff',
+            color: vendido ? '#fff' : '#1b6d02',
         }}>
             {numero}
         </div>
