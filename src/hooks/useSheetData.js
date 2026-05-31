@@ -25,8 +25,11 @@ export function useSheetData() {
                     const compradorIdx = headers.findIndex(
                         (ch, ci) => ci > i && ch.includes('comprador')
                     )
+                    const vendedorIdx = headers.findIndex(
+                        (ch, ci) => ci > i && ch.includes('vendedor')
+                    )
                     if (compradorIdx !== -1) {
-                        pares.push({ numIdx: i, compradorIdx })
+                        pares.push({ numIdx: i, compradorIdx, vendedorIdx })
                     }
                 }
             })
@@ -38,14 +41,15 @@ export function useSheetData() {
             const parsed = []
 
             rows.slice(1).forEach(row => {
-                pares.forEach(({ numIdx, compradorIdx }) => {
+                pares.forEach(({ numIdx, compradorIdx, vendedorIdx }) => {
                     const numero = row[numIdx]?.trim()
                     const comprador = row[compradorIdx]?.trim() ?? ''
 
                     if (numero && numero !== '') {
                         parsed.push({
                             numero,
-                            estado: comprador === '' ? 'disponible' : 'vendido'
+                            estado: comprador === '' ? 'disponible' : 'vendido',
+                            vendedor: vendedorIdx !== -1 ? (row[vendedorIdx]?.trim().toLowerCase() || '') : ''
                         })
                     }
                 })

@@ -9,3 +9,5 @@ export const REFRESH_INTERVAL_MS = 120000
 // Datos de la rifa
 export const RIFA_PRECIO = 'Precio: 1 x 5.000$, 3 x 13.000'
 
+export const PRECIO_1 = 5000
+export const PRECIO_3 = 13000
