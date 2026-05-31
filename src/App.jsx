@@ -50,7 +50,7 @@ export default function App() {
           color: '#888',
           fontWeight: '400'
         }}>
-          Liga de Honor Oro Caballeros - {numbers.length} - {Math.round((numbers.filter(n => n.estado === 'vendido').length / numbers.length) * 100) || 0}% vendido
+          Liga de Honor Oro Caballeros - {numbers.length} rifas - {Math.round((numbers.filter(n => n.estado === 'vendido').length / numbers.length) * 100) || 0}% vendido
         </p>
       </header>
 
@@ -103,7 +103,7 @@ export default function App() {
                     >
                       @liga.aaaj
                     </a>
-                    {' '}←
+                    {' '}← quedan {numbers.filter(n => n.estado === 'disponible').length} rifas
                   </p>
                 </div>
                 <div style={{
