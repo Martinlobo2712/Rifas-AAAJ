@@ -10,10 +10,11 @@ export function PrizesTable({ prizes = [], loading }) {
     return (
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
             <thead>
-                <tr style={{ borderBottom: '1px solid #c0392b' }}>
-                    <th style={{ textAlign: 'left', padding: '8px', color: '#c0392b' }}>#</th>
-                    <th style={{ textAlign: 'left', padding: '8px', color: '#c0392b' }}>Premio</th>
-                    <th style={{ textAlign: 'left', padding: '8px', color: '#c0392b' }}>Ganador</th>
+                <tr style={{ borderBottom: '1px solid #cc1818' }}>
+                    <th style={{ textAlign: 'left', padding: '8px', color: '#cc1818' }}>#</th>
+                    <th style={{ textAlign: 'left', padding: '8px', color: '#cc1818' }}>Premio</th>
+                    <th style={{ textAlign: 'left', padding: '8px', color: '#cc1818' }}>N° Ganador</th>
+                    <th style={{ textAlign: 'left', padding: '8px', color: '#cc1818' }}>Ganador</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,9 @@ export function PrizesTable({ prizes = [], loading }) {
                         <td style={{ padding: '8px', fontWeight: '500' }}>{p.premio}</td>
                         <td style={{ padding: '8px', color: p.ganador ? '#1a1a1a' : '#bbb' }}>
                             {p.ganador || 'A sortear'}
+                        </td>
+                        <td style={{ padding: '8px', color: p.comprador ? '#1a1a1a' : '#bbb' }}>
+                            {p.comprador || 'A sortear'}
                         </td>
                     </tr>
                 ))}

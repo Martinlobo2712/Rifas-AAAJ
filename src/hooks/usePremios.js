@@ -23,7 +23,8 @@ export function usePremios() {
                     .filter(row => row[premioIdx]?.trim() !== '')
                     .map(row => ({
                         premio: row[premioIdx]?.trim(),
-                        ganador: row[ganadorIdx]?.trim() || ''
+                        ganador: row[ganadorIdx]?.trim() || '',
+                        comprador: row[ganadorIdx + 1]?.trim() || ''
                     }))
 
                 setPrizes(parsed)

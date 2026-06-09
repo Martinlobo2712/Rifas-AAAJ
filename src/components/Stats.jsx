@@ -1,6 +1,7 @@
 import { PRECIO_1, PRECIO_3 } from '../config'
 
-export function Stats({ onVolver, numbers }) {
+export function Stats({ onVolver, onSorteo, numbers }) {
+
     const total = numbers.length
     const vendidos = numbers.filter(n => n.estado === 'vendido').length
     const faltan = total - vendidos
@@ -24,9 +25,17 @@ export function Stats({ onVolver, numbers }) {
 
     return (
         <div>
-            <button className="btn-volver" onClick={onVolver}>
-                ← Volver a las rifas
-            </button>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
+                <button className="btn-volver" onClick={onVolver}>
+                    ← Volver a las rifas
+                </button>
+                <button
+                    className="btn-volver"
+                    onClick={onSorteo}
+                >
+                    Ir al sorteo →
+                </button>
+            </div>
 
             <div style={{
                 display: 'grid',

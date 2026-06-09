@@ -10,6 +10,7 @@ import { usePremios } from './hooks/usePremios'
 import { PrizesTable } from './components/PrizesTable.jsx'
 import { SponsorBanner } from './components/SponsorsBanner'
 import { Stats } from './components/Stats'
+import { Sorteo } from './components/Sorteo'
 import logo from './assets/escudoaaaj.svg'
 
 export default function App() {
@@ -119,8 +120,10 @@ export default function App() {
                 </div>
               </>
             )}
-          </div>) : (
-          <Stats onVolver={() => setVista('rifas')} numbers={numbers} />
+          </div>) : vista === 'stats' ? (
+            <Stats onVolver={() => setVista('rifas')} onSorteo={() => setVista('sorteo')} numbers={numbers} />
+          ) : (
+          <Sorteo onVolver={() => setVista('rifas')} numbers={numbers} prizes={prizes} />
         )}
 
         {lastUpdated && (
@@ -128,7 +131,7 @@ export default function App() {
             Última actualización: {lastUpdated.toLocaleTimeString('es-AR', { hour12: false })}
             {' · '}
             <span
-              onClick={() => setVista(v => v === 'stats')}
+              onClick={() => setVista(v => v === 'rifas' ? 'stats' : 'rifas')}
               style={{ userSelect: 'none', whiteSpace: 'pre-wrap' }}
             >
               Próxima
